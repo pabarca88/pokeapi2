@@ -1,0 +1,273 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #000;
+  background-color: #fff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.vanilla:hover {
+  filter: drop-shadow(0 0 2em #f7df1eaa);
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+
+  a:hover {
+    color: #747bff;
+  }
+
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+main {
+  width: 900px;
+  margin: 0 auto;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 10px 10px 20px;
+  width: 30%;
+  color: #fff;
+  margin: 10px 1.5%;
+
+  .card__title {
+    margin: 0;
+    text-transform: capitalize;
+    font-size: 22px;
+  }
+
+  .card__subtitle {
+    margin: 0;
+    opacity: .7;
+    font-size: 18px;
+  }
+
+  .card__img {
+    padding: 0;
+    margin: 0;
+    height: 170px;
+
+    img {
+      height: 100%;
+      width: auto;
+      vertical-align: bottom;
+    }
+  }
+
+  .card__body {
+    text-align: left;
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 0;
+
+      li {}
+    }
+  }
+
+  &.normal {
+    background: #A8A878;
+    /* Tipo Normal */
+  }
+
+  &.fire {
+    background: #F08030;
+    /* Tipo Fuego */
+  }
+
+  &.water {
+    background: #6890F0;
+    /* Tipo Agua */
+  }
+
+  &.grass {
+    background: #78C850;
+    /* Tipo Planta */
+  }
+
+  &.electric {
+    background: #F8D030;
+    /* Tipo Eléctrico */
+  }
+
+  &.ice {
+    background: #98D8D8;
+    /* Tipo Hielo */
+  }
+
+  &.fighting {
+    background: #C03028;
+    /* Tipo Lucha */
+  }
+
+  &.poison {
+    background: #A040B0;
+    /* Tipo Veneno */
+  }
+
+  &.ground {
+    background: #E0C068;
+    /* Tipo Tierra */
+  }
+
+  &.flying {
+    background: #A890F0;
+    /* Tipo Volador */
+  }
+
+  &.psychic {
+    background: #F85888;
+    /* Tipo Psíquico */
+  }
+
+  &.bug {
+    background: #A8B820;
+    /* Tipo Bicho */
+  }
+
+  &.rock {
+    background: #B8A038;
+    /* Tipo Roca */
+  }
+
+  &.ghost {
+    background: #705898;
+    /* Tipo Fantasma */
+  }
+
+  &.dragon {
+    background: #7038F8;
+    /* Tipo Dragón */
+  }
+
+  &.fairy {
+    background: #F4B9F4;
+    /* Tipo Hada */
+  }
+}
+
+.filtros {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .buscador {
+    position: relative;
+
+    input {
+      height: 36px;
+      width: 200px;
+      padding: 5px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .buscador__btn {
+      position: absolute;
+      right: 0;
+      color: #000;
+      top: 8px;
+      right: 10px;
+      cursor: pointer;
+
+      svg {
+        width: 20px;
+      }
+    }
+  }
+}
