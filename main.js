@@ -1,11 +1,54 @@
 import './style.scss'
 
+let typeSelect = '';
+
+//START APP
 document.addEventListener('DOMContentLoaded',()=>{
-  document.getElementById('input-buscador').addEventListener('input', filtrarCards);
-  llamarAPI();
+  //LISTENER FILTER
+  document.getElementById('input-search').addEventListener('input', filterCards);
+
+  //call Poke API
+  setTimeout(()=>{
+    callAPI();
+  },500);
+
+  setTimeout(()=>{
+    loading(false);
+  },2000);
+
+  //LISTENER FILTER TYPES
+  const filtrosTipo = document.querySelectorAll('.types__item');
+  filtrosTipo.forEach(f =>{
+    f.addEventListener('click',()=>{
+      if(f.classList.contains('active')) {
+        f.classList.remove('active');
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+          card.classList.remove('oculto');
+        });
+        typeSelect = "";
+      } else {
+        filtrosTipo.forEach(filtro =>{
+          filtro.classList.remove('active');
+        })
+        f.classList.add('active');
+        const type = f.dataset.rel;
+        typeSelect = f.dataset.rel;
+        const cards = document.querySelectorAll('.card');
+  
+        cards.forEach(card => {
+          if (card.classList.contains(type)) {
+            card.classList.remove('oculto');
+          } else {
+            card.classList.add('oculto');
+          }
+        });
+      }
+    });
+  });
 });
 
-async function llamarAPI() {
+async function callAPI() {
   try {
     const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=150&offset=0");
     const data = await response.json();
@@ -17,26 +60,36 @@ async function llamarAPI() {
       const pokemonResponse = await fetch(pokemon.url);
       const pokemonData = await pokemonResponse.json();
       
-      crearCard(pokemonData);
+      createCard(pokemonData);
     }
   } catch (error) {
     console.error("Error:", error);
   }
 }
 
-function crearCard(data) {
+function createCard(data) {
   const cards = document.getElementById('cards');
-  const highQualityImageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`;
+  const PokeImg = data.sprites.other["official-artwork"].front_default;
+  const PokeImg2 = data.sprites.other["official-artwork"].front_shiny;
   const types = data.types.map(type => type.type.name).join(', ');
   const firstType = data.types[0].type.name;
-
+  
   const altura = data.height * 10;
   const peso = data.weight/10;
 
+  let clase = "";
+  if(typeSelect) {
+    clase = "oculto";
+    if(typeSelect == firstType) {
+      clase = "";
+    }
+  }
+
   const card = `
-    <div class="card ${firstType}" data-name="${data.name}">
+    <div class="card ${firstType} ${clase}" data-name="${data.name}">
       <figure class="card__img">
-        <img src="${highQualityImageUrl}" />
+        <img src="${PokeImg}" class="card__img1"/>
+        <img src="${PokeImg2}" class="card__img2"/>
       </figure>
       <h3 class="card__title">${data.name}</h3>
       <h3 class="card__subtitle">#${data.id}</h3>
@@ -52,10 +105,10 @@ function crearCard(data) {
   cards.insertAdjacentHTML('beforeend',card);
 }
 
-// Función para filtrar las tarjetas
-function filtrarCards() {
-  const inputBuscador = document.getElementById('input-buscador');
-  const filter = inputBuscador.value.toLowerCase();
+// Function to filter the cards
+function filterCards() {
+  const inputSearch = document.getElementById('input-search');
+  const filter = inputSearch.value.toLowerCase();
   const cards = document.querySelectorAll('.card');
 
   cards.forEach(card => {
@@ -66,4 +119,13 @@ function filtrarCards() {
       card.style.display = 'none';
     }
   });
+}
+
+function loading(t) {
+  const loading = document.querySelector('.loading');
+  if(t) {
+    loading.classList.remove('oculto');
+  } else {
+    loading.classList.add('oculto');
+  }
 }

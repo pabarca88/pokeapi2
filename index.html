@@ -3,32 +3,64 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PokeApi</title>
 </head>
 
 <body>
   <div id="app">
+    <div class="loading">
+      <img src="dist/assets/images/loading.gif" alt="">
+    </div>
     <header>
-      <nav></nav>
+      <div class="container">
+        <div class="logo-pokemon">
+          <img src="images/logo-pokemon.png" alt="">
+        </div>
+      </div>
     </header>
-    <main id="main">
-      <div class="filtros">
-        <div class="buscador">
-          <input type="text" placeholder="Buscar..." id="input-buscador">
-          <div class="buscador__btn">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="size-6">
+    <section class="content">
+      <aside class="filters">
+        <div class="search">
+          <input type="text" placeholder="Buscar..." id="input-search">
+          <div class="search__btn">
+            <svg style="width: 20px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke-width="1.5" stroke="currentColor" class="size-6">
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
             </svg>
           </div>
         </div>
-      </div>
-      <h1>PokeApi V2.0</h1>
-      <div class="cards" id="cards"></div>
-    </main>
+        <div class="filterType">
+          <label for="">Filtrar por Tipo:</label>
+          <div class="types" id="types">
+            <div class="types__item" data-rel="grass">grass</div>
+            <div class="types__item" data-rel="fire">fire</div>
+            <div class="types__item" data-rel="water">water</div>
+            <div class="types__item" data-rel="bug">bug</div>
+            <div class="types__item" data-rel="normal">normal</div>
+            <div class="types__item" data-rel="poison">poison</div>
+            <div class="types__item" data-rel="electric">electric</div>
+            <div class="types__item" data-rel="ground">ground</div>
+            <div class="types__item" data-rel="fairy">fairy</div>
+            <div class="types__item" data-rel="fighting">fighting</div>
+            <div class="types__item" data-rel="psychic">psychic</div>
+            <div class="types__item" data-rel="rock">rock</div>
+            <div class="types__item" data-rel="ghost">ghost</div>
+            <div class="types__item" data-rel="ice">ice</div>
+            <div class="types__item" data-rel="dragon">dragon</div>
+
+          </div>
+        </div>
+      </aside>
+      <main id="main">
+        <div class="container">
+          <h1>PokeApi</h1>
+          <div class="cards" id="cards"></div>
+        </div>
+      </main>
+    </section>
   </div>
   <script type="module" src="main.js"></script>
 </body>

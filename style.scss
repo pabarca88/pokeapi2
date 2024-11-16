@@ -23,15 +23,17 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2rem;
   line-height: 1.1;
+  text-align: left;
+  margin: 0 0 1rem;
+  padding-left: .5rem;
 }
 
 * {
@@ -39,10 +41,26 @@ h1 {
 }
 
 #app {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+  width: 100%;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+header {
+  background: #ef5350;
+  text-align: center;
+  margin-bottom: 2rem;
+
+  img {
+    padding: 10px;
+    width: 250px;
+  }
 }
 
 .logo {
@@ -104,9 +122,124 @@ button:focus-visible {
   }
 }
 
-main {
-  width: 900px;
+.content {
+  display: flex;
+  width: 1100px;
+  max-width: 100%;
   margin: 0 auto;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0 15px;
+
+  @media (max-width: 991px) {
+    flex-direction: column;
+  }
+}
+
+.filters {
+  width: 22%;
+  min-width: 22%;
+  background: #ef5350;
+  color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  position: sticky;
+  top: 20px;
+
+  @media (max-width: 991px) {
+    position: relative;
+    top: 0;
+  }
+
+  .search {
+    position: relative;
+    margin-bottom: 1rem;
+    width: 100%;
+
+    input {
+      height: 36px;
+      width: 100%;
+      max-width: 100%;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 10px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .search__btn {
+      position: absolute;
+      right: 0;
+      color: #000;
+      top: 8px;
+      right: 10px;
+      cursor: pointer;
+
+      svg {
+        width: 20px;
+      }
+    }
+  }
+
+  .filterType {
+    text-align: left;
+
+    label {
+      margin-bottom: .5rem;
+      display: block;
+    }
+
+    .types {
+      display: flex;
+      flex-wrap: wrap;
+      text-align: left;
+
+      .types__item {
+        display: inline-block;
+        border: 1px solid #fff;
+        padding: 3px 10px 5px;
+        border-radius: 15px;
+        line-height: 1;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        cursor: pointer;
+        transition: all .3s ease;
+        text-transform: capitalize;
+
+        &.active {
+          background: #fff;
+          color: #ef5350;
+
+          &:hover {
+            background: #fff;
+            color: #ef5350;
+          }
+        }
+
+        &:hover {
+          background: rgba(255, 255, 255, .1);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 991px) {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+}
+
+main {
+  width: 75%;
+  min-width: 75%;
+  max-width: 100%;
+  margin: 0 auto;
+
+  @media (max-width: 991px) {
+    width: 100%;
+  }
 }
 
 .cards {
@@ -121,6 +254,20 @@ main {
   width: 30%;
   color: #fff;
   margin: 10px 1.5%;
+  display: block;
+
+  @media (max-width: 768px) {
+    width: 47%;
+  }
+
+  @media (max-width: 550px) {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  &.oculto {
+    display: none;
+  }
 
   .card__title {
     margin: 0;
@@ -143,6 +290,10 @@ main {
       height: 100%;
       width: auto;
       vertical-align: bottom;
+
+      &.card__img2 {
+        display: none;
+      }
     }
   }
 
@@ -237,37 +388,42 @@ main {
     background: #F4B9F4;
     /* Tipo Hada */
   }
+
+  &:hover {
+    .card__img {
+      .card__img1 {
+        display: none;
+      }
+
+      .card__img2 {
+        display: inline-block;
+      }
+    }
+  }
 }
 
-.filtros {
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 1);
+  transition: all .3s ease;
+  z-index: 999;
 
-  .buscador {
-    position: relative;
+  &.oculto {
+    opacity: 0;
+    z-index: -1;
+    visibility: hidden;
+  }
 
-    input {
-      height: 36px;
-      width: 200px;
-      padding: 5px;
-
-      &:focus {
-        outline: none;
-      }
-    }
-
-    .buscador__btn {
-      position: absolute;
-      right: 0;
-      color: #000;
-      top: 8px;
-      right: 10px;
-      cursor: pointer;
-
-      svg {
-        width: 20px;
-      }
-    }
+  img {
+    width: 80px;
+    height: auto;
   }
 }
