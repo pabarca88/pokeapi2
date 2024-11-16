@@ -44,4 +44,13 @@ Los resultados se actualizan automáticamente para mostrar solo los Pokémon coi
 Selecciona un tipo de Pokémon del menú desplegable.
 La lista se actualiza para mostrar solo los Pokémon de ese tipo.
 
+
+Para agregar un enlace a la demo de tu aplicación en el archivo README.md, puedes utilizar la siguiente sintaxis Markdown:
+
+markdown
+Copiar código
+## 🎮 Demo
+
+Puedes ver la aplicación en vivo en el siguiente enlace: [PokeAPI Demo](https://pabarca88.github.io/pokeapi2/)
+
 ¡Gracias por probar este proyecto!
