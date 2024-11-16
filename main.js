@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   setTimeout(()=>{
     loading(false);
-  },2000);
+  },1500);
 
   //LISTENER FILTER TYPES
   const filtrosTipo = document.querySelectorAll('.types__item');
